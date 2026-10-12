@@ -33,34 +33,6 @@
   --font-mono: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --bg: #0d1424;
-    --surface: #131c30;
-    --surface-2: #172238;
-    --ink: #e8edf5;
-    --ink-soft: #b7c1d1;
-    --muted: #8591a5;
-    --line: #233049;
-    --line-2: #1c273d;
-    --line-hover: #34445f;
-    --accent: #3cc2ad;
-    --accent-ink: #6fd9c7;
-    --accent-wash: rgba(60, 194, 173, .1);
-    --accent-edge: rgba(60, 194, 173, .25);
-    --amber: #e6a35d;
-    --amber-wash: rgba(230, 163, 93, .1);
-    --amber-edge: rgba(230, 163, 93, .25);
-    --solid: #e8edf5;
-    --solid-ink: #0d1424;
-    --nav-bg: rgba(13, 20, 36, .8);
-    --contour-a: 60, 194, 173;
-    --contour-b: 183, 193, 209;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 30px rgba(0, 0, 0, .3);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
-  }
-}
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #0d1424;

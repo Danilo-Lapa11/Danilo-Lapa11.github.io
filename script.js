@@ -384,7 +384,7 @@ const savedTheme = store.get("theme");
 if (savedTheme) document.documentElement.dataset.theme = savedTheme;
 $("#themeToggle").addEventListener("click", () => {
   const root = document.documentElement;
-  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  const dark = root.dataset.theme === "dark";
   root.dataset.theme = dark ? "light" : "dark";
   store.set("theme", root.dataset.theme);
   drawContour();
@@ -438,7 +438,6 @@ function stop() { if (raf) cancelAnimationFrame(raf); raf = null; }
 
 sizeCanvas();
 addEventListener("resize", () => { sizeCanvas(); drawContour(); });
-matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", drawContour);
 if (reduceMotion) {
   drawContour();
 } else if ("IntersectionObserver" in window) {
