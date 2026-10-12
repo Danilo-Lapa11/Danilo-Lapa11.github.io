@@ -17,7 +17,7 @@ const UI = {
     "research.title": "Ciência de dados aplicada à saúde pública.",
     "research.lead": "Pesquisa publicada em periódico peer-reviewed, unindo machine learning e dados epidemiológicos.",
     "certs.title": "Credenciais que comprovam a base.",
-    "certs.lead": "Certificações e treinamentos em IA, machine learning e dados, de Microsoft, AWS e Databricks.",
+    "certs.lead": "Certificações e treinamentos em IA, machine learning, dados e inglês, da mais recente à mais antiga.",
     "exp.eyebrow": "Trajetória",
     "exp.title": "Onde venho aplicando dados.",
     "exp.lead": "Da monitoria e pesquisa na UFPE à ciência de dados em produção.",
@@ -33,6 +33,7 @@ const UI = {
     issued: "Emitido em",
     verify: "Verificar credencial",
     aboutCert: "Sobre a certificação",
+    target: "Previsão",
     lab: "Laboratório",
     langBtn: "EN",
     langAria: "Switch to English",
@@ -57,7 +58,7 @@ const UI = {
     "research.title": "Data science applied to public health.",
     "research.lead": "Peer-reviewed research combining machine learning and epidemiological data.",
     "certs.title": "Credentials behind the groundwork.",
-    "certs.lead": "Certifications and training in AI, machine learning and data from Microsoft, AWS and Databricks.",
+    "certs.lead": "Certifications and training in AI, machine learning, data and English, from newest to oldest.",
     "exp.eyebrow": "Path",
     "exp.title": "Where I've been putting data to work.",
     "exp.lead": "From teaching and research at UFPE to data science in production.",
@@ -73,6 +74,7 @@ const UI = {
     issued: "Issued",
     verify: "Verify credential",
     aboutCert: "About this certification",
+    target: "Target",
     lab: "Lab",
     langBtn: "PT",
     langAria: "Mudar para português",
@@ -87,9 +89,11 @@ const GH = CONTENT.contact.github;
 const ICONS = {
   github: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>',
   linkedin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>',
   mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
   arrowRight: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
   arrowUpRight: '<svg class="farrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>',
 };
 
@@ -243,9 +247,11 @@ function render() {
       .join("")}</div>`;
 
   // Certificações
-  $("#certs").innerHTML = certifications
+  const byDate = (c) => (c.inProgress ? "9999" : c.issued || "0000");
+  $("#certs").innerHTML = [...certifications]
+    .sort((a, b) => byDate(b).localeCompare(byDate(a)))
     .map((c) => `
-      <article class="cert">
+      <article class="cert${c.inProgress ? " is-progress" : ""}">
         <div class="cert-stub">
           ${c.badge ? `<img class="cert-badge" src="${esc(c.badge)}" alt="${esc(`${c.issuer}: ${L(c.name)}`)}" width="112" height="112" loading="lazy" />` : ""}
           <div>
@@ -257,8 +263,8 @@ function render() {
           <span class="cert-perf" aria-hidden="true"></span>
           <h3 class="cert-name">${esc(L(c.name))}</h3>
           <p class="cert-meta">
-            <span class="ok">${ICONS.check}${esc(L(c.status) || t.certified)}</span>
-            ${c.date ? `<span>${esc(t.issued)} ${esc(L(c.date))}</span>` : ""}
+            ${c.inProgress ? `<span class="progress">${ICONS.clock}${esc(L(c.status))}</span>` : `<span class="ok">${ICONS.check}${esc(L(c.status) || t.certified)}</span>`}
+            ${c.date ? `<span>${esc(c.inProgress ? t.target : t.issued)} ${esc(L(c.date))}</span>` : ""}
             ${c.credentialId ? `<span>ID ${esc(c.credentialId)}</span>` : ""}
           </p>
           <p class="cert-summary">${fmt(L(c.summary))}</p>
@@ -295,6 +301,7 @@ function render() {
   // Contato
   $("#contactLinks").innerHTML = [
     contact.email && `<a class="clink primary" href="mailto:${esc(contact.email)}">${ICONS.mail}E-mail</a>`,
+    contact.phone && `<a class="clink" href="tel:${esc(contact.phone.replace(/[^\d+]/g, ""))}">${ICONS.phone}${esc(contact.phone)}</a>`,
     contact.linkedin && `<a class="clink" href="${esc(contact.linkedin)}" target="_blank" rel="noopener">${ICONS.linkedin}LinkedIn</a>`,
     contact.github && `<a class="clink" href="${esc(contact.github)}" target="_blank" rel="noopener">${ICONS.github}GitHub</a>`,
   ].filter(Boolean).join("");
@@ -343,17 +350,16 @@ const carousels = [...document.querySelectorAll("[data-carousel]")].map((root) =
   if ("ResizeObserver" in window) new ResizeObserver(update).observe(track);
   return update;
 });
-// Largura útil da janela, sem a barra de rolagem; sem valor válido, o CSS usa 100vw
-function syncViewportWidth() {
-  const w = document.documentElement.clientWidth;
-  if (w > 0) document.documentElement.style.setProperty("--vw", `${w}px`);
-  else document.documentElement.style.removeProperty("--vw");
+// Largura da barra de rolagem clássica (0 no celular e no macOS): o CSS a usa
+// para manter o 1º card do carrossel alinhado ao texto em telas estreitas
+function syncScrollbar() {
+  const sb = innerWidth - document.documentElement.clientWidth;
+  document.documentElement.style.setProperty("--sb", `${Math.max(0, Math.min(sb, 40))}px`);
 }
 function updateCarousels() {
-  syncViewportWidth();
+  syncScrollbar();
   carousels.forEach((update) => update());
 }
-if ("ResizeObserver" in window) new ResizeObserver(updateCarousels).observe(document.documentElement);
 addEventListener("resize", updateCarousels);
 addEventListener("load", updateCarousels);
 

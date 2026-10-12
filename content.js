@@ -13,8 +13,8 @@ const CONTENT = {
     photoPosition: "52% 30%", // ponto focal do corte (horizontal vertical)
     roles: ["Data Scientist", "Machine Learning Engineer", "Applied AI"],
     headline: {
-      pt: "Transformo dados em *decisões* e produtos de IA.",
-      en: "I turn data into *decisions* and AI products.",
+      pt: "Aplicações de IA com *impacto real* em cidades, empresas e saúde pública.",
+      en: "AI applications with *real impact* on cities, businesses and public health.",
     },
     lead: {
       pt: "Cientista de dados em Recife. Hoje desenvolvo modelos de IA para o Centro de Operações do Recife, que acompanha a cidade em tempo real: risco climático, anomalias no trânsito e apoio à decisão. Trabalho do pipeline ao deploy, com Python, machine learning e LLMs.",
@@ -144,7 +144,9 @@ const CONTENT = {
   },
 
   // ---------------------------------------------------------------
-  //  CERTIFICAÇÕES: para adicionar outra, copie o bloco abaixo.
+  //  CERTIFICAÇÕES: para adicionar outra, copie um bloco abaixo.
+  //  A ordem na página é automática: em andamento primeiro, depois da
+  //  mais recente para a mais antiga, pelo campo "issued" (AAAA-MM-DD).
   // ---------------------------------------------------------------
   certifications: [
     {
@@ -155,6 +157,7 @@ const CONTENT = {
       level: { pt: "Fundamentos", en: "Fundamentals" },
       status: { pt: "Certificado", en: "Certified" },
       date: { pt: "set 2025", en: "Sep 2025" },
+      issued: "2025-09",
       credentialId: "4F3C6F30D0AB438A",
       verifyUrl: "https://learn.microsoft.com/api/credentials/share/pt-br/DaniloLapa-5168/4F3C6F30D0AB438A?sharingId=E4BA2AD2F73CEC65",
       infoUrl: "https://learn.microsoft.com/credentials/certifications/azure-ai-fundamentals/",
@@ -178,7 +181,8 @@ const CONTENT = {
       name: "AWS Educate Machine Learning Foundations",
       level: { pt: "Treinamento", en: "Training" },
       status: { pt: "Treinamento concluído", en: "Training completed" },
-      date: { pt: "mar 2025", en: "Mar 2025" },
+      date: { pt: "07 mar 2025", en: "07 Mar 2025" },
+      issued: "2025-03-07",
       verifyUrl: "https://www.credly.com/badges/8811ce8d-2dcc-444e-8a4a-4c95e669da4f",
       summary: {
         pt: "Conceitos fundamentais de machine learning e aplicação do pipeline de ML para resolver um problema de negócio, com aprovação na avaliação final do curso.",
@@ -196,7 +200,8 @@ const CONTENT = {
       name: "Lakehouse Fundamentals",
       level: { pt: "Fundamentos", en: "Fundamentals" },
       status: { pt: "Credenciado", en: "Accredited" },
-      date: "", // TODO: data de emissão
+      date: { pt: "08 mai 2025", en: "08 May 2025" },
+      issued: "2025-05-08",
       verifyUrl: "", // TODO: link do Credly ou Databricks Academy
       summary: {
         pt: "Arquitetura lakehouse e a plataforma Databricks: como unir data lake e data warehouse para engenharia de dados, analytics e machine learning em um só lugar.",
@@ -215,6 +220,7 @@ const CONTENT = {
       level: { pt: "B2 Upper Intermediate", en: "B2 Upper Intermediate" },
       status: { pt: "Certificado", en: "Certified" },
       date: { pt: "27 set 2026", en: "27 Sep 2026" },
+      issued: "2026-09-27",
       verifyUrl: "https://cert.efset.org/en/jzgVdm",
       summary: {
         pt: "Inglês nível B2 no CEFR, com compreensão auditiva em nível C1.",
@@ -227,6 +233,25 @@ const CONTENT = {
         { skill: { pt: "Escrita", en: "Writing" }, score: 48, level: "B1" },
         { skill: { pt: "Conversação", en: "Speaking" }, score: 43, level: "B1" },
       ],
+    },
+    {
+      code: "AIF-C01",
+      issuer: "Amazon Web Services",
+      badge: "assets/aws-ai-practitioner.png",
+      name: "AWS Certified AI Practitioner",
+      level: { pt: "Foundational", en: "Foundational" },
+      status: { pt: "Em andamento", en: "In progress" },
+      inProgress: true,
+      date: "", // opcional: previsão da prova, ex.: { pt: "dez 2026", en: "Dec 2026" }
+      infoUrl: "https://aws.amazon.com/certification/certified-ai-practitioner/",
+      summary: {
+        pt: "Em preparação para a certificação. Cobre fundamentos de IA e machine learning, IA generativa e modelos de fundação na AWS, IA responsável, segurança e governança.",
+        en: "Currently preparing for this certification. It covers AI and machine learning fundamentals, generative AI and foundation models on AWS, responsible AI, security and governance.",
+      },
+      topics: {
+        pt: ["IA generativa", "Amazon Bedrock", "Machine Learning", "IA responsável"],
+        en: ["Generative AI", "Amazon Bedrock", "Machine Learning", "Responsible AI"],
+      },
     },
   ],
 
@@ -367,6 +392,7 @@ const CONTENT = {
   ],
 
   contact: {
+    phone: "+55 81 99503-6268",
     email: "danwanderleylapa@gmail.com",
     linkedin: "https://www.linkedin.com/in/danilolapa/",
     github: "https://github.com/Danilo-Lapa11",

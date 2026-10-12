@@ -8,7 +8,7 @@
   --surface-2: #fafbfa;
   --ink: #16233d;
   --ink-soft: #38455e;
-  --muted: #6a7382;
+  --muted: #5d6675;
   --line: #e5e7e3;
   --line-2: #eef0ec;
   --line-hover: #d3d6d0;
@@ -16,7 +16,7 @@
   --accent-ink: #0a5f54;
   --accent-wash: rgba(13, 122, 108, .08);
   --accent-edge: rgba(13, 122, 108, .18);
-  --amber: #c2661f;
+  --amber: #a5521a;
   --amber-wash: rgba(194, 102, 31, .08);
   --amber-edge: rgba(194, 102, 31, .2);
   --solid: #16233d;          /* botões e cartões escuros */
@@ -149,8 +149,8 @@ img, svg { max-width: 100%; }
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 .hero-title {
-  font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 6.2vw, 4.4rem);
-  line-height: 1.06; letter-spacing: -.03em; margin: 0 0 22px; max-width: 17ch; text-wrap: balance;
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5.4vw, 4.1rem);
+  line-height: 1.06; letter-spacing: -.03em; margin: 0 0 22px; max-width: 21ch; text-wrap: balance;
 }
 .hero-title .accent, .about-body .accent { color: var(--accent); }
 .hero-roles {
@@ -184,6 +184,9 @@ main > section:not(.hero) { padding: 76px 0; }
   letter-spacing: -.024em; line-height: 1.08; margin: 16px 0 0; text-wrap: balance;
 }
 .sec-head p { color: var(--ink-soft); margin: 14px 0 0; font-size: 1.06rem; }
+.sec-head--wide { max-width: none; }
+.sec-head--wide h2 { text-wrap: pretty; }
+.sec-head--wide p { max-width: none; text-wrap: pretty; }
 
 /* About */
 .about-grid { display: grid; grid-template-columns: 1.4fr .9fr; gap: 54px; align-items: start; }
@@ -252,13 +255,15 @@ main > section:not(.hero) { padding: 76px 0; }
 }
 
 /* Carrossel de uma linha, sangrando até as bordas da janela.
-   --vw é a largura útil da janela (sem a barra de rolagem), atualizada pelo script.
    --gutter alinha o primeiro card com a coluna de conteúdo (.wrap). */
 .carousel {
-  --gutter: max(26px, calc((var(--vw, 100vw) - var(--maxw)) / 2 + 26px));
+  /* largura da janela; o excesso sob a barra de rolagem é cortado pelo body,
+     e o deslocamento se compensa no --gutter, mantendo o 1º card alinhado ao texto */
+  --bleed: 100vw;
+  --gutter: max(calc(26px + var(--sb, 0px) / 2), calc((var(--bleed) - var(--maxw)) / 2 + 26px));
   position: relative;
-  width: var(--vw, 100vw);
-  margin-inline: calc(50% - var(--vw, 100vw) / 2);
+  width: var(--bleed);
+  margin-inline: calc(50% - var(--bleed) / 2);
 }
 .car-track {
   display: grid; grid-auto-flow: column; grid-auto-columns: var(--card-w);
@@ -287,8 +292,8 @@ main > section:not(.hero) { padding: 76px 0; }
 .car-btn:disabled { opacity: .4; cursor: default; box-shadow: none; }
 .carousel.is-static .car-progress { visibility: hidden; }
 @media (max-width: 560px) {
-  .carousel { --gutter: 16px; }
-  .car-projects, .car-certs { --card-w: calc(var(--vw, 100vw) - 64px); }
+  .carousel { --gutter: calc(16px + var(--sb, 0px) / 2); }
+  .car-projects, .car-certs { --card-w: calc(var(--bleed) - 64px); }
 }
 @media (prefers-reduced-motion: reduce) { .car-track { scroll-behavior: auto; } .car-thumb { transition: none; } }
 
@@ -325,6 +330,9 @@ main > section:not(.hero) { padding: 76px 0; }
 .cert-meta { font-size: 12.5px; color: var(--muted); margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 4px 12px; }
 .cert-meta .ok { color: var(--accent-ink); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
 .cert-meta .ok svg { width: 14px; height: 14px; }
+.cert-meta .progress { color: var(--amber); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+.cert-meta .progress svg { width: 14px; height: 14px; }
+.cert.is-progress .cert-badge { filter: grayscale(.35); opacity: .85; }
 .cert-summary { margin: 0 0 14px; color: var(--ink-soft); font-size: .88rem; line-height: 1.55; }
 .cert .chips { margin-bottom: 16px; gap: 6px; }
 .cert .chip { font-size: 10.5px; padding: 3px 8px; }
