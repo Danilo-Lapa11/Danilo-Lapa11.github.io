@@ -26,6 +26,7 @@ const UI = {
     "contact.title": "Vamos construir algo com dados?",
     "contact.lead": "Aberto a colaborações, freelances e conversas sobre ciência de dados, IA aplicada e dados públicos.",
     viewRepo: "Ver repositório",
+    slide: "Mostrar imagem {n} de {total}",
     readPaper: "Ler o artigo · DOI",
     viewPost: "Ver publicação",
     linkedinPost: "Post no LinkedIn",
@@ -67,6 +68,7 @@ const UI = {
     "contact.title": "Shall we build something with data?",
     "contact.lead": "Open to collaborations, freelance work and conversations about data science, applied AI and public data.",
     viewRepo: "View repository",
+    slide: "Show image {n} of {total}",
     readPaper: "Read the paper · DOI",
     viewPost: "View post",
     linkedinPost: "LinkedIn post",
@@ -99,34 +101,6 @@ const ICONS = {
 
 // Capas ilustradas dos cards (SVG gerado, sem imagens externas)
 const COVERS = {
-  bars: (id) => `
-    <defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b2b4a"/><stop offset="1" stop-color="#0c5b51"/></linearGradient></defs>
-    <rect width="400" height="225" fill="url(#${id})"/>
-    <g stroke="rgba(255,255,255,.08)"><line x1="0" y1="64" x2="400" y2="64"/><line x1="0" y1="120" x2="400" y2="120"/><line x1="0" y1="176" x2="400" y2="176"/></g>
-    <g><rect x="52" y="150" width="30" height="45" rx="3" fill="rgba(255,255,255,.22)"/><rect x="102" y="128" width="30" height="67" rx="3" fill="rgba(255,255,255,.3)"/><rect x="152" y="140" width="30" height="55" rx="3" fill="rgba(255,255,255,.26)"/><rect x="202" y="104" width="30" height="91" rx="3" fill="rgba(255,255,255,.34)"/><rect x="252" y="86" width="30" height="109" rx="3" fill="#d98a3d"/><rect x="302" y="62" width="30" height="133" rx="3" fill="#e6a35d"/></g>
-    <polyline points="67,150 117,128 167,140 217,104 267,86 317,62" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
-    <g fill="#fff"><circle cx="67" cy="150" r="3.5"/><circle cx="117" cy="128" r="3.5"/><circle cx="167" cy="140" r="3.5"/><circle cx="217" cy="104" r="3.5"/><circle cx="267" cy="86" r="3.5"/><circle cx="317" cy="62" r="3.5"/></g>`,
-  scatter: (id) => `
-    <defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e6f62"/><stop offset="1" stop-color="#0a4a43"/></linearGradient></defs>
-    <rect width="400" height="225" fill="url(#${id})"/>
-    <path d="M70 18 C165 95 150 150 345 210" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="7 6"/>
-    <g fill="rgba(255,255,255,.82)"><circle cx="92" cy="58" r="6"/><circle cx="126" cy="44" r="6"/><circle cx="74" cy="92" r="6"/><circle cx="118" cy="96" r="6"/><circle cx="150" cy="66" r="6"/><circle cx="96" cy="128" r="6"/><circle cx="158" cy="110" r="6"/></g>
-    <g fill="#e6a35d"><circle cx="248" cy="150" r="6"/><circle cx="288" cy="120" r="6"/><circle cx="268" cy="182" r="6"/><circle cx="312" cy="158" r="6"/><circle cx="240" cy="112" r="6"/><circle cx="300" cy="196" r="6"/><circle cx="330" cy="140" r="6"/></g>`,
-  benchmark: (id) => `
-    <defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17294a"/><stop offset="1" stop-color="#20406e"/></linearGradient></defs>
-    <rect width="400" height="225" fill="url(#${id})"/>
-    <line x1="40" y1="186" x2="360" y2="186" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
-    <g><rect x="66" y="92" width="48" height="94" rx="4" fill="#15b39a"/><rect x="140" y="70" width="48" height="116" rx="4" fill="#e6a35d"/><rect x="214" y="110" width="48" height="76" rx="4" fill="rgba(255,255,255,.55)"/><rect x="288" y="56" width="48" height="130" rx="4" fill="#5bbfae"/></g>
-    <g fill="rgba(255,255,255,.9)" font-family="monospace" font-size="12"><text x="78" y="205">M1</text><text x="152" y="205">M2</text><text x="226" y="205">M3</text><text x="300" y="205">M4</text></g>`,
-  series: (id) => `
-    <defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c5b51"/><stop offset="1" stop-color="#1b2b4a"/></linearGradient></defs>
-    <rect width="400" height="225" fill="url(#${id})"/>
-    <g stroke="rgba(255,255,255,.08)"><line x1="0" y1="60" x2="400" y2="60"/><line x1="0" y1="112" x2="400" y2="112"/><line x1="0" y1="164" x2="400" y2="164"/></g>
-    <line x1="262" y1="24" x2="262" y2="200" stroke="rgba(255,255,255,.3)" stroke-dasharray="4 5"/>
-    <path d="M262 98 L300 82 L340 70 L372 54 L372 96 L340 104 L300 112 L262 98 Z" fill="rgba(230,163,93,.22)"/>
-    <polyline points="28,150 52,138 74,146 98,120 120,128 146,104 168,114 192,96 214,108 238,90 262,98" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-    <polyline points="262,98 300,96 340,86 372,76" fill="none" stroke="#e6a35d" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>
-    <circle cx="262" cy="98" r="4.5" fill="#e6a35d" stroke="#fff" stroke-width="1.5"/>`,
   paper: (id) => `
     <defs>
       <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e6f62"/><stop offset="1" stop-color="#0a4038"/></linearGradient>
@@ -205,17 +179,33 @@ function render() {
 
   // Projetos em destaque
   $("#featured").innerHTML = featured
-    .map((p, i) => `
-      <a class="pcard" href="${esc(repoUrl(p.repo))}" target="_blank" rel="noopener">
-        ${cover(p.cover, `cv${i}`, L(p.tag))}
+    .map((p, i) => {
+      const body = (titleHtml) => `
         <div class="pbody">
           <p class="repo-name">/ ${esc(p.repo)}</p>
-          <h3>${esc(L(p.title))}</h3>
-          ${chips(p.chips)}
+          <h3>${titleHtml}</h3>
+          ${chips(p.chips.map(L))}
           <p class="pdesc">${fmt(L(p.description))}</p>
           <div class="pfoot"><span class="fmeta">${esc(t.viewRepo)}</span>${ICONS.arrowUpRight}</div>
+        </div>`;
+      if (!p.images) {
+        return `
+      <a class="pcard" href="${esc(repoUrl(p.repo))}" target="_blank" rel="noopener">
+        ${cover(p.cover, `cv${i}`, L(p.tag))}${body(esc(L(p.title)))}
+      </a>`;
+      }
+      // card com galeria: o link cobre o card todo, e os pontos da galeria ficam acima dele
+      const n = p.images.length;
+      return `
+      <article class="pcard has-gallery">
+        <div class="cover gallery">
+          <span class="cover-tag">${esc(L(p.tag))}</span>
+          ${p.images.map((im, k) => `<img class="g-slide${k === 0 ? " is-active" : ""}" src="${esc(im.src)}" alt="${esc(L(im.alt))}" loading="lazy" />`).join("")}
+          ${n > 1 ? `<div class="g-dots">${p.images.map((_, k) => `<button type="button" class="g-dot" data-slide="${k}" aria-pressed="${k === 0}" aria-label="${esc(t.slide.replace("{n}", k + 1).replace("{total}", n))}"></button>`).join("")}</div>` : ""}
         </div>
-      </a>`)
+        ${body(`<a class="stretch" href="${esc(repoUrl(p.repo))}" target="_blank" rel="noopener">${esc(L(p.title))}</a>`)}
+      </article>`;
+    })
     .join("");
 
 
@@ -295,7 +285,12 @@ function render() {
 
   // Skills
   $("#skillGrid").innerHTML = skills
-    .map((s) => `<div class="skill-block reveal"><p class="sh">${esc(L(s.group))}</p><div class="tags">${s.items.map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div></div>`)
+    .map((s) => `
+      <div class="skill-block reveal">
+        <h3 class="sh">${esc(L(s.group))}</h3>
+        ${s.note ? `<p class="snote">${esc(L(s.note))}</p>` : ""}
+        <div class="tags">${s.items.map((x) => `<span class="tag">${esc(L(x))}</span>`).join("")}</div>
+      </div>`)
     .join("");
 
   // Contato
@@ -321,6 +316,16 @@ function certLinks(c, t, L) {
   ].filter(Boolean);
   return links.length ? `<div class="cert-foot">${links.join("")}</div>` : "";
 }
+
+// Galeria dentro dos cards de projeto
+$("#featured").addEventListener("click", (e) => {
+  const dot = e.target.closest(".g-dot");
+  if (!dot) return;
+  const gallery = dot.closest(".gallery");
+  const k = Number(dot.dataset.slide);
+  gallery.querySelectorAll(".g-slide").forEach((img, i) => img.classList.toggle("is-active", i === k));
+  gallery.querySelectorAll(".g-dot").forEach((d, i) => d.setAttribute("aria-pressed", String(i === k)));
+});
 
 // Carrosséis de uma linha (projetos e certificações)
 const carousels = [...document.querySelectorAll("[data-carousel]")].map((root) => {

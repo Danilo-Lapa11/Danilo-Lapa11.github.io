@@ -244,6 +244,25 @@ main > section:not(.hero) { padding: 76px 0; }
 .farrow { color: var(--muted); transition: transform .2s ease, color .2s ease; flex: none; }
 .pcard:hover .farrow, .repo:hover .farrow { transform: translate(3px, -3px); color: var(--accent); }
 
+/* Card com galeria de figuras */
+.pcard.has-gallery { position: relative; }
+.pcard.has-gallery:focus-within { border-color: var(--accent); }
+.stretch { color: inherit; }
+.stretch::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 16px; }
+.stretch:focus-visible { outline: none; }
+.stretch:focus-visible::after { outline: 2px solid var(--accent); outline-offset: 3px; }
+.cover.gallery { background: #fff; border-bottom: 1px solid var(--line); }
+.g-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 10px; opacity: 0; transition: opacity .35s ease; }
+.g-slide.is-active { opacity: 1; }
+.gallery .cover-tag { background: rgba(22, 35, 61, .78); }
+.g-dots { position: absolute; z-index: 2; right: 12px; bottom: 10px; display: flex; gap: 6px; padding: 5px 7px; border-radius: 100px; background: rgba(22, 35, 61, .55); }
+.g-dot { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; cursor: pointer; background: rgba(255, 255, 255, .5); transition: background .16s ease, transform .16s ease; }
+.g-dot:hover { background: rgba(255, 255, 255, .85); }
+.g-dot[aria-pressed="true"] { background: #fff; transform: scale(1.15); }
+.g-dot:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.pcard.has-gallery .cover .cover-tag, .pcard.has-gallery .g-dots { z-index: 2; }
+@media (prefers-reduced-motion: reduce) { .g-slide { transition: none; } }
+
 .pcard.wide { display: grid; grid-template-columns: 1fr 1.22fr; margin-bottom: 20px; }
 .pcard.wide .cover { aspect-ratio: auto; height: 100%; min-height: 240px; }
 .pcard.wide .pbody { padding: 30px 32px; }
@@ -377,12 +396,22 @@ main > section:not(.hero) { padding: 76px 0; }
 /* =========================================================
    Skills
    ========================================================= */
-.skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.skill-block { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 20px; background: var(--surface); }
-.skill-block .sh { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 14px; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { font-size: 14px; font-weight: 500; color: var(--ink-soft); background: var(--surface-2); border: 1px solid var(--line); padding: 6px 12px; border-radius: 100px; }
-@media (max-width: 720px) { .skill-grid { grid-template-columns: 1fr; } }
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.skill-block { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 20px; background: var(--surface); }
+.skill-block .sh { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-ink); margin: 0; }
+.skill-block .snote { margin: 6px 0 16px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.tag { font-size: 13.5px; font-weight: 500; color: var(--ink-soft); background: var(--surface-2); border: 1px solid var(--line); padding: 5px 12px; border-radius: 100px; }
+/* o último grupo ocupa a linha inteira, evitando um bloco órfão */
+.skill-block:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(220px, auto) 1fr; column-gap: 32px; align-items: center; }
+.skill-block:last-child .snote { margin-bottom: 0; }
+.skill-block:last-child .tags { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; justify-content: flex-end; }
+@media (max-width: 760px) {
+  .skill-block:last-child { display: flex; }
+  .skill-block:last-child .snote { margin-bottom: 16px; }
+  .skill-block:last-child .tags { justify-content: flex-start; }
+}
+@media (max-width: 560px) { .skill-grid { grid-template-columns: 1fr; } }
 
 /* =========================================================
    Contact

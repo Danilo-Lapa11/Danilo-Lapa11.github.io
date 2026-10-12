@@ -47,51 +47,79 @@ const CONTENT = {
 
   // ---------------------------------------------------------------
   //  PROJETOS: vindos de github.com/Danilo-Lapa11
-  //  cover: "bars" | "scatter" | "benchmark" | "grid" | "series" | "network"
+  //  Cada projeto usa "images" (figuras reais); sem imagens, use cover: "paper".
   // ---------------------------------------------------------------
   featured: [
     {
+      repo: "unsupervised-technics-EEG",
+      // "images" troca a capa ilustrada por uma galeria de figuras (contain, fundo branco)
+      images: [
+        {
+          src: "assets/eeg-topomapas.png",
+          alt: {
+            pt: "Mapas topográficos do escalpo com os canais de EEG mais selecionados nos experimentos 3a e 3b",
+            en: "Scalp topographic maps showing the EEG channels most selected in experiments 3a and 3b",
+          },
+        },
+        {
+          src: "assets/eeg-sinais-brutos.webp",
+          alt: {
+            pt: "Dez segundos de EEG bruto em 21 canais, comparando um participante controle e um do grupo TCM",
+            en: "Ten seconds of raw 21 channel EEG comparing a control participant and one from the TCM group",
+          },
+        },
+      ],
+      tag: { pt: "TCC · EEG", en: "Thesis · EEG" },
+      title: { pt: "Técnicas não supervisionadas em EEG", en: "Unsupervised techniques on EEG" },
+      chips: ["Jupyter", "MNE · ICA", { pt: "Clusterização", en: "Clustering" }],
+      description: {
+        pt: "Meu TCC: EEG de 38 participantes (controles e grupo TCM) durante relatos autobiográficos. Pré-processamento com ICA, atributos por janela de 5 s e clusterização sem rótulos (k-means, GMM, HDBSCAN), com validação leave-one-subject-out e testes estatísticos.",
+        en: "My undergraduate thesis: EEG from 38 participants (controls and TCM group) during autobiographical recall. ICA preprocessing, 5 s window features and label free clustering (k-means, GMM, HDBSCAN), validated with leave-one-subject-out and statistical tests.",
+      },
+    },
+    {
       repo: "data-science-challenge",
-      cover: "bars",
+      images: [
+        {
+          src: "assets/abinbev-distribuicao-pedidos.png",
+          alt: {
+            pt: "Histograma de dias de pedido por usuário por mês com ajuste de Poisson de lambda 3,43",
+            en: "Histogram of order days per user per month with a Poisson fit, lambda 3.43",
+          },
+        },
+        {
+          src: "assets/abinbev-rmse-modelos.png",
+          alt: {
+            pt: "Comparação de RMSE entre cinco modelos: MLP e Random Forest com os menores erros, perto de 0,79",
+            en: "RMSE comparison across five models: MLP and Random Forest have the lowest errors, around 0.79",
+          },
+        },
+      ],
       tag: { pt: "Business case", en: "Business case" },
       title: { pt: "Case de Data Science AB InBev", en: "AB InBev Data Science case" },
-      chips: ["Jupyter", "Python", "EDA · Modelagem"],
+      chips: ["Jupyter", "scikit-learn", "Grid Search"],
       description: {
-        pt: "Estudo de caso de nível pleno para o BEES (AB InBev): exploração, modelagem e comunicação de resultados de ponta a ponta.",
-        en: "Mid-level case study for BEES (AB InBev): exploration, modeling and communication of results end to end.",
+        pt: "Case para o BEES (AB InBev): prever quantos dias de pedido faltavam para cada cliente em agosto de 2022. A demanda segue uma distribuição próxima de Poisson (λ = 3,43); comparei cinco modelos com grid search e o **MLP** venceu, com **MAE de 0,49 dia**.",
+        en: "Case for BEES (AB InBev): predict how many order days each customer still had left in August 2022. Demand follows a near Poisson distribution (λ = 3.43); I compared five models with grid search and the **MLP** won, with an **MAE of 0.49 days**.",
       },
     },
     {
       repo: "diabetes-readmission-classification",
-      cover: "scatter",
+      images: [
+        {
+          src: "assets/diabetes-distribuicao-target.png",
+          alt: {
+            pt: "Distribuição da variável alvo: cerca de 40 mil sem readmissão, 27 mil após 30 dias e 9 mil em menos de 30 dias",
+            en: "Target distribution: about 40 thousand not readmitted, 27 thousand after 30 days and 9 thousand within 30 days",
+          },
+        },
+      ],
       tag: { pt: "Classificação", en: "Classification" },
       title: { pt: "Readmissão hospitalar de pacientes diabéticos", en: "Hospital readmission of diabetic patients" },
-      chips: ["Jupyter", "CRISP-DM", "Healthcare"],
+      chips: ["Jupyter", "CRISP-DM", "XGBoost · LightGBM"],
       description: {
-        pt: "Metodologia CRISP-DM para encontrar o melhor modelo de classificação de readmissões, do entendimento do problema à avaliação.",
-        en: "CRISP-DM methodology to find the best model for classifying readmissions, from problem understanding to evaluation.",
-      },
-    },
-    {
-      repo: "spambase-classification",
-      cover: "benchmark",
-      tag: { pt: "Benchmark ML", en: "ML benchmark" },
-      title: { pt: "Detecção de spam · 4 modelos comparados", en: "Spam detection · 4 models compared" },
-      chips: ["Jupyter", "scikit-learn", "CIn · UFPE"],
-      description: {
-        pt: "Comparação de quatro algoritmos de classificação no dataset Spambase, com análise de métricas de validação e trade-offs.",
-        en: "Four classification algorithms compared on the Spambase dataset, with analysis of validation metrics and trade-offs.",
-      },
-    },
-    {
-      repo: "Predicting-B3-shares",
-      cover: "series",
-      tag: { pt: "Séries temporais", en: "Time series" },
-      title: { pt: "Previsão de ações da B3", en: "Forecasting B3 stock prices" },
-      chips: ["Streamlit", "Machine Learning", "API"],
-      description: {
-        pt: "Sistema em Streamlit que coleta cotações da bolsa brasileira via API e exibe previsões com ML e séries temporais.",
-        en: "Streamlit app that pulls Brazilian stock exchange quotes via API and shows ML and time-series forecasts.",
+        pt: "Prever se um paciente diabético volta ao hospital em até 30 dias, depois ou nunca, em cerca de 76 mil internações com classes desbalanceadas. Pelo CRISP-DM, comparei 9 modelos, de árvores a XGBoost, LightGBM e stacking.",
+        en: "Predict whether a diabetic patient returns to hospital within 30 days, later or never, across about 76 thousand admissions with imbalanced classes. Using CRISP-DM, I compared 9 models, from trees to XGBoost, LightGBM and stacking.",
       },
     },
   ],
@@ -384,11 +412,43 @@ const CONTENT = {
     },
   ],
 
+  // Stack: "items" aceita texto simples ou { pt, en } quando o nome muda com o idioma
   skills: [
-    { group: { pt: "Linguagens", en: "Languages" }, items: ["Python", "R", "SQL", "TypeScript"] },
-    { group: { pt: "ML & Estatística", en: "ML & Statistics" }, items: ["scikit-learn", "Modelagem preditiva", "NLP", "LLMs", "Análise estatística"] },
-    { group: { pt: "Dados & Cloud", en: "Data & Cloud" }, items: ["Google Cloud", "BigQuery", "Cloud Run", "Azure ML", "dbt", "Docker"] },
-    { group: { pt: "Frontend & Viz", en: "Frontend & Viz" }, items: ["React", "Streamlit", "Power BI", "Análise geoespacial", "Dataviz"] },
+    {
+      group: { pt: "IA generativa & LLMs", en: "Generative AI & LLMs" },
+      note: { pt: "Agentes e fluxos analíticos com LLM", en: "Agents and LLM powered analytical workflows" },
+      items: ["LangChain", "LangGraph", "LLMs", "Whisper", { pt: "NLP", en: "NLP" }, "Claude Code"],
+    },
+    {
+      group: { pt: "Machine Learning", en: "Machine Learning" },
+      note: { pt: "Classificação, regressão, séries temporais e clusterização", en: "Classification, regression, time series and clustering" },
+      items: ["scikit-learn", "Pandas", "NumPy", "PySpark", { pt: "Detecção de anomalias", en: "Anomaly detection" }, { pt: "Otimização de rotas", en: "Route optimization" }],
+    },
+    {
+      group: { pt: "MLOps & Deploy", en: "MLOps & Deploy" },
+      note: { pt: "Do notebook a serviços em produção", en: "From notebook to production services" },
+      items: ["Docker", "FastAPI", "MLOps", "Git & GitHub", { pt: "Code review", en: "Code review" }, "Cloud Run"],
+    },
+    {
+      group: { pt: "Bancos de dados & Engenharia", en: "Databases & Engineering" },
+      note: { pt: "Ingestão, modelagem e pipelines de dados", en: "Ingestion, modeling and data pipelines" },
+      items: ["PostgreSQL", "SQL", "BigQuery", "dbt", "ETL", { pt: "APIs REST", en: "REST APIs" }],
+    },
+    {
+      group: { pt: "Cloud", en: "Cloud" },
+      note: { pt: "Certificações Microsoft e AWS", en: "Microsoft and AWS certifications" },
+      items: ["Google Cloud", "Azure ML", "AWS", "Databricks"],
+    },
+    {
+      group: { pt: "Visualização & Frontend", en: "Visualization & Frontend" },
+      note: { pt: "Dashboards e interfaces para os modelos", en: "Dashboards and interfaces for the models" },
+      items: ["Power BI", "Streamlit", "React", { pt: "Análise geoespacial", en: "Geospatial analysis" }, "Dataviz"],
+    },
+    {
+      group: { pt: "Linguagens & idiomas", en: "Languages" },
+      note: { pt: "Programação e idiomas", en: "Programming and spoken languages" },
+      items: ["Python", "SQL", "R", "TypeScript", { pt: "Português nativo", en: "Portuguese (native)" }, { pt: "Inglês B2 (EF SET)", en: "English B2 (EF SET)" }],
+    },
   ],
 
   contact: {
