@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Danilo Lapa | Portfólio</title>
+  <meta name="description" content="Danilo Lapa, Data Scientist, Machine Learning Engineer e Applied AI em Recife. Projetos, pesquisa, certificações e contato." />
+  <meta property="og:title" content="Danilo Lapa | Data Scientist" />
+  <meta property="og:description" content="Projetos de machine learning, pesquisa peer-reviewed e certificação Microsoft AI-900." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://danilo-lapa11.github.io/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2316233d'/><text x='16' y='21' font-family='monospace' font-weight='700' font-size='13' fill='%23fff' text-anchor='middle'>DL</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="ui.skip">Pular para o conteúdo</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="mono-mark" id="brandMark">DL</span>
+        <span id="brandName">Danilo Lapa</span>
+      </a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#sobre" class="hide-md" data-i18n="nav.about">Sobre</a>
+        <a href="#projetos" class="hide-sm" data-i18n="nav.projects">Projetos</a>
+        <a href="#pesquisa" class="hide-md" data-i18n="nav.research">Pesquisa</a>
+        <a href="#certificacoes" class="hide-md" data-i18n="nav.certs">Certificações</a>
+        <a href="#contato" class="nav-cta" data-i18n="nav.contact">Contato</a>
+      </nav>
+      <div class="controls">
+        <button class="ctl" id="langToggle" type="button">EN</button>
+        <button class="ctl" id="themeToggle" type="button">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="contour" aria-hidden="true"></canvas>
+      <div class="hero-mask"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-avail"><span class="dot"></span><span id="heroAvail"></span></div>
+        <h1 class="hero-title" id="heroTitle"></h1>
+        <div class="hero-roles" id="heroRoles"></div>
+        <p class="hero-lead" id="heroLead"></p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" id="heroGithub" target="_blank" rel="noopener"><span data-icon="github"></span><span data-i18n="hero.github">Ver GitHub</span></a>
+          <a class="btn btn-ghost" href="#projetos"><span data-i18n="hero.projects">Explorar projetos</span><span data-icon="arrowRight"></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="band">
+      <div class="wrap about-grid">
+        <div>
+          <span class="eyebrow" data-i18n="nav.about">Sobre</span>
+          <div class="sec-head"><h2 id="aboutTitle"></h2></div>
+          <div class="about-body reveal" id="aboutBody"></div>
+        </div>
+        <aside class="facts reveal" id="facts"></aside>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="projects.eyebrow">Projetos em destaque</span>
+        <div class="sec-head">
+          <h2 data-i18n="projects.title">Estudos de caso e modelos de machine learning.</h2>
+          <p data-i18n="projects.lead">Uma seleção do meu GitHub, do case de negócio à classificação com metodologia CRISP-DM.</p>
+        </div>
+        <div class="carousel car-projects reveal" data-carousel>
+          <div class="car-track" id="featured" tabindex="0" role="region" data-i18n-aria="projects.eyebrow" aria-label="Projetos em destaque"></div>
+          <div class="car-nav">
+            <div class="car-progress" aria-hidden="true"><span class="car-thumb"></span></div>
+            <button type="button" class="car-btn" data-dir="-1" data-i18n-aria="car.prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+            <button type="button" class="car-btn" data-dir="1" data-i18n-aria="car.next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <div class="more">
+          <div class="more-head">
+            <h3 data-i18n="projects.moreTitle">Mais repositórios</h3>
+            <div class="filters" role="group" id="filters"></div>
+          </div>
+          <ul class="repo-list" id="repoList"></ul>
+          <a class="btn btn-ghost more-all" id="allRepos" target="_blank" rel="noopener"><span data-icon="github"></span><span data-i18n="projects.all">Ver todos os repositórios no GitHub</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PESQUISA -->
+    <section id="pesquisa" class="band">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="nav.research">Pesquisa</span>
+        <div class="sec-head">
+          <h2 data-i18n="research.title">Ciência de dados aplicada à saúde pública.</h2>
+          <p data-i18n="research.lead">Pesquisa publicada em periódico peer-reviewed, unindo machine learning e dados epidemiológicos.</p>
+        </div>
+        <div id="research"></div>
+      </div>
+    </section>
+
+    <!-- CERTIFICAÇÕES -->
+    <section id="certificacoes">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="nav.certs">Certificações</span>
+        <div class="sec-head">
+          <h2 data-i18n="certs.title">Credenciais que comprovam a base.</h2>
+          <p data-i18n="certs.lead">Certificações e treinamentos em IA, machine learning e dados, de Microsoft, AWS e Databricks.</p>
+        </div>
+        <div class="carousel car-certs reveal" data-carousel>
+          <div class="car-track certs" id="certs" tabindex="0" role="region" data-i18n-aria="nav.certs" aria-label="Certificações"></div>
+          <div class="car-nav">
+            <div class="car-progress" aria-hidden="true"><span class="car-thumb"></span></div>
+            <button type="button" class="car-btn" data-dir="-1" data-i18n-aria="car.prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+            <button type="button" class="car-btn" data-dir="1" data-i18n-aria="car.next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIÊNCIA -->
+    <section id="experiencia" class="band">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="exp.eyebrow">Trajetória</span>
+        <div class="sec-head">
+          <h2 data-i18n="exp.title">Onde venho aplicando dados.</h2>
+          <p data-i18n="exp.lead">Da monitoria e pesquisa na UFPE à ciência de dados em produção.</p>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="skills.eyebrow">Stack & ferramentas</span>
+        <div class="sec-head"><h2 data-i18n="skills.title">As ferramentas que uso para entregar do dado ao produto.</h2></div>
+        <div class="skill-grid" id="skillGrid"></div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="wrap">
+        <div class="contact-card reveal">
+          <span class="eyebrow" data-i18n="nav.contact">Contato</span>
+          <h2 data-i18n="contact.title">Vamos construir algo com dados?</h2>
+          <p data-i18n="contact.lead">Aberto a colaborações, freelances e conversas sobre ciência de dados, IA aplicada e civic tech.</p>
+          <div class="contact-links" id="contactLinks"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot-inner">
+      <span class="fbrand" id="footName">Danilo Lapa</span>
+      <span class="fmeta" id="footMeta"></span>
+    </div>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
