@@ -9,45 +9,40 @@ const CONTENT = {
   profile: {
     name: "Danilo Lapa",
     initials: "DL",
+    photo: "assets/danilo.jpg",
+    photoPosition: "52% 30%", // ponto focal do corte (horizontal vertical)
     roles: ["Data Scientist", "Machine Learning Engineer", "Applied AI"],
     headline: {
       pt: "Transformo dados em *decisões* e produtos de IA.",
       en: "I turn data into *decisions* and AI products.",
     },
     lead: {
-      pt: "Cientista de dados pleno em Recife, construindo soluções de ponta a ponta, de pipelines e modelagem preditiva a LLMs e visualização geoespacial. Gosto de problemas com impacto real, especialmente em civic tech e dados públicos.",
-      en: "Mid-level data scientist in Recife, building end-to-end solutions, from pipelines and predictive modeling to LLMs and geospatial visualization. I'm drawn to problems with real impact, especially civic tech and public data.",
-    },
-    available: {
-      pt: "Disponível para colaborações & projetos",
-      en: "Open to collaborations & projects",
+      pt: "Cientista de dados em Recife. Hoje desenvolvo modelos de IA para o Centro de Operações do Recife, que acompanha a cidade em tempo real: risco climático, anomalias no trânsito e apoio à decisão. Trabalho do pipeline ao deploy, com Python, machine learning e LLMs.",
+      en: "Data scientist in Recife. I currently build AI models for the Recife Operations Center, which monitors the city in real time: climate risk, traffic anomalies and decision support. I work from pipeline to deploy, with Python, machine learning and LLMs.",
     },
   },
 
   about: {
+    photoAlt: {
+      pt: "Danilo Lapa sorrindo, de camisa polo branca, em frente a uma parede escura",
+      en: "Danilo Lapa smiling in a white polo shirt in front of a dark wall",
+    },
     title: {
       pt: "Da engenharia de dados ao modelo em produção.",
       en: "From data engineering to models in production.",
     },
     paragraphs: {
       pt: [
-        "Sou **Cientista de Dados Pleno** baseado em Recife, com experiência ao longo de toda a stack de dados: engenharia em Python, modelagem de machine learning, análise estatística em R e frontend em React/TypeScript.",
-        "Atualmente trabalho na **Aquila Consultoria em Gestão**, com foco em projetos de **civic tech** e **análise geoespacial**, usando dados para apoiar decisões públicas. Antes disso, passei dois anos na **FH Data**, onde construí modelos de otimização, automações de relatórios e pipelines de dados para clientes nacionais.",
-        "Sou graduado em **Ciência da Computação pela UFPE** e coautor de uma publicação peer-reviewed sobre **previsão de arboviroses** (J. Health Inform., 2024). Gosto de projetos que unem rigor estatístico e produto, do notebook ao deploy.",
+        "Sou **Cientista de Dados Consultor** na **Aquila Consultoria em Gestão**, em Recife. Desenvolvo soluções de dados e IA para a plataforma de monitoramento do **Centro de Operações do Recife**: classificação de risco climático, detecção de anomalias de trânsito com dados do Waze e fluxos analíticos com LLMs.",
+        "Antes, passei dois anos na **FH Data**. Lá criei um modelo de otimização de rotas que ajudou a reduzir em **10% o custo de frete** de um cliente da indústria química e automatizei relatórios que consumiam **três dias de trabalho manual por semana**.",
+        "Sou formado em **Ciência da Computação pela UFPE**, onde fui pesquisador bolsista do CNPq e coautor de um artigo sobre **previsão de arboviroses** com machine learning (J. Health Inform., 2024). Gosto de projetos que juntam rigor estatístico e produto, do notebook ao deploy.",
       ],
       en: [
-        "I'm a **Mid-level Data Scientist** based in Recife, working across the whole data stack: data engineering in Python, machine learning modeling, statistical analysis in R and frontend in React/TypeScript.",
-        "I currently work at **Aquila Consultoria em Gestão**, focused on **civic tech** and **geospatial analysis**, using data to support public decisions. Before that, I spent two years at **FH Data**, building optimization models, reporting automation and data pipelines for national clients.",
-        "I hold a **B.Sc. in Computer Science from UFPE** and co-authored a peer-reviewed paper on **arbovirus forecasting** (J. Health Inform., 2024). I enjoy projects that combine statistical rigor and product, from notebook to deploy.",
+        "I'm a **Data Scientist Consultant** at **Aquila Consultoria em Gestão**, in Recife. I build data and AI solutions for the **Recife Operations Center** monitoring platform: climate risk classification, traffic anomaly detection with Waze data and LLM powered analytical workflows.",
+        "Before that, I spent two years at **FH Data**. There I built a route optimization model that helped cut a chemical industry client's **freight costs by 10%**, and automated reports that took **three days of manual work every week**.",
+        "I hold a **B.Sc. in Computer Science from UFPE**, where I was a CNPq funded researcher and co-authored a paper on **arbovirus forecasting** with machine learning (J. Health Inform., 2024). I enjoy projects that combine statistical rigor and product, from notebook to deploy.",
       ],
     },
-    facts: [
-      { k: { pt: "Função", en: "Role" }, v: { pt: "Cientista de Dados Consultor", en: "Data Scientist Consultant" } },
-      { k: { pt: "Atual", en: "Now" }, v: { pt: "Aquila Consultoria", en: "Aquila Consultoria" } },
-      { k: { pt: "Foco", en: "Focus" }, v: { pt: "Civic tech & Geo", en: "Civic tech & Geo" } },
-      { k: { pt: "Cloud", en: "Cloud" }, v: { pt: "GCP · Azure", en: "GCP · Azure" } },
-      { k: { pt: "Base", en: "Based in" }, v: { pt: "Recife, PE", en: "Recife, Brazil" } },
-    ],
   },
 
   // ---------------------------------------------------------------
@@ -99,34 +94,6 @@ const CONTENT = {
         en: "Streamlit app that pulls Brazilian stock exchange quotes via API and shows ML and time-series forecasts.",
       },
     },
-  ],
-
-  // Outros repositórios. cat: "ml" | "data" | "eng"
-  moreRepos: [
-    { repo: "logistics-costs-prediction", cat: "ml", lang: "Jupyter",
-      desc: { pt: "Previsão de custos logísticos com modelos de machine learning.", en: "Forecasting logistics costs with machine learning models." } },
-    { repo: "covertype_classification", cat: "ml", lang: "Jupyter",
-      desc: { pt: "Busca de hiperparâmetros para otimizar modelos no dataset Covertype.", en: "Hyperparameter search to tune models on the Covertype dataset." } },
-    { repo: "tabular-letter-recognition", cat: "ml", lang: "Jupyter",
-      desc: { pt: "Classificação multiclasse de letras a partir de atributos tabulares, seguindo CRISP-DM.", en: "Multiclass letter classification from tabular features, following CRISP-DM." } },
-    { repo: "Ionosphere_Classification", cat: "ml", lang: "Jupyter",
-      desc: { pt: "Classificação de sinais de radar no dataset Ionosphere.", en: "Radar signal classification on the Ionosphere dataset." } },
-    { repo: "covid-19_prediction", cat: "ml", lang: "Jupyter",
-      desc: { pt: "Previsão do número de casos de COVID-19 para o mês seguinte.", en: "Forecasting next month's COVID-19 case count." } },
-    { repo: "Find-Bank-Score", cat: "ml", lang: "Jupyter",
-      desc: { pt: "Modelo de IA para estimar score bancário na concessão de crédito.", en: "AI model to estimate bank credit scores for lending." } },
-    { repo: "MBTF_Statistical_Inference", cat: "data", lang: "Jupyter",
-      desc: { pt: "Testes de hipótese para verificar se o MTBF de servidores está acima do esperado.", en: "Hypothesis tests to check whether server MTBF is above target." } },
-    { repo: "PowerBI-Sales-Profit-Report", cat: "data", lang: "Power BI",
-      desc: { pt: "Dashboard interativo com relatórios de vendas e lucro.", en: "Interactive dashboard with sales and profit reports." } },
-    { repo: "ETL-Scrapy-Streamlit", cat: "data", lang: "Python",
-      desc: { pt: "Pipeline de ETL com raspagem via Scrapy e visualização em Streamlit.", en: "ETL pipeline scraping with Scrapy and visualizing in Streamlit." } },
-    { repo: "Streamlit-App", cat: "data", lang: "Python",
-      desc: { pt: "Coleta de dados de mercado via API e app de visualização em Streamlit.", en: "Market data pulled from an API into a Streamlit visualization app." } },
-    { repo: "File_Transfer_Chat", cat: "eng", lang: "Python",
-      desc: { pt: "Transferência de arquivos via UDP e chat com transferência confiável RDT 3.0.", en: "UDP file transfer and a chat with reliable RDT 3.0 delivery." } },
-    { repo: "Kruskal-Algorithm", cat: "eng", lang: "Python",
-      desc: { pt: "Algoritmo de Kruskal aplicado a uma base pública real para encontrar a árvore geradora mínima.", en: "Kruskal's algorithm on a real public dataset to find the minimum spanning tree." } },
   ],
 
   research: {
@@ -239,6 +206,27 @@ const CONTENT = {
         pt: ["Lakehouse", "Delta Lake", "Engenharia de dados", "Governança"],
         en: ["Lakehouse", "Delta Lake", "Data engineering", "Governance"],
       },
+    },
+    {
+      code: "54/100 · B2",
+      issuer: "EF SET",
+      badge: "assets/efset-english.png",
+      name: { pt: "Certificado de Inglês EF SET", en: "EF SET English Certificate" },
+      level: { pt: "B2 Upper Intermediate", en: "B2 Upper Intermediate" },
+      status: { pt: "Certificado", en: "Certified" },
+      date: { pt: "27 set 2026", en: "27 Sep 2026" },
+      verifyUrl: "https://cert.efset.org/en/jzgVdm",
+      summary: {
+        pt: "Inglês nível B2 no CEFR, com compreensão auditiva em nível C1.",
+        en: "English at CEFR level B2, with listening at C1 level.",
+      },
+      // Nota de 0 a 100 por habilidade e nível CEFR correspondente
+      scores: [
+        { skill: { pt: "Leitura", en: "Reading" }, score: 58, level: "B2" },
+        { skill: { pt: "Compreensão auditiva", en: "Listening" }, score: 67, level: "C1" },
+        { skill: { pt: "Escrita", en: "Writing" }, score: 48, level: "B1" },
+        { skill: { pt: "Conversação", en: "Speaking" }, score: 43, level: "B1" },
+      ],
     },
   ],
 

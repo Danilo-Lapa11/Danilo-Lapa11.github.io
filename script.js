@@ -14,8 +14,6 @@ const UI = {
     "projects.eyebrow": "Projetos em destaque",
     "projects.title": "Estudos de caso e modelos de machine learning.",
     "projects.lead": "Uma seleção do meu GitHub, do case de negócio à classificação com metodologia CRISP-DM.",
-    "projects.moreTitle": "Mais repositórios",
-    "projects.all": "Ver todos os repositórios no GitHub",
     "research.title": "Ciência de dados aplicada à saúde pública.",
     "research.lead": "Pesquisa publicada em periódico peer-reviewed, unindo machine learning e dados epidemiológicos.",
     "certs.title": "Credenciais que comprovam a base.",
@@ -26,8 +24,7 @@ const UI = {
     "skills.eyebrow": "Stack & ferramentas",
     "skills.title": "As ferramentas que uso para entregar do dado ao produto.",
     "contact.title": "Vamos construir algo com dados?",
-    "contact.lead": "Aberto a colaborações, freelances e conversas sobre ciência de dados, IA aplicada e civic tech.",
-    filters: { all: "Todos", ml: "Machine Learning", data: "Dados & BI", eng: "Engenharia" },
+    "contact.lead": "Aberto a colaborações, freelances e conversas sobre ciência de dados, IA aplicada e dados públicos.",
     viewRepo: "Ver repositório",
     readPaper: "Ler o artigo · DOI",
     viewPost: "Ver publicação",
@@ -57,8 +54,6 @@ const UI = {
     "projects.eyebrow": "Featured projects",
     "projects.title": "Case studies and machine learning models.",
     "projects.lead": "A selection from my GitHub, from business cases to classification with the CRISP-DM methodology.",
-    "projects.moreTitle": "More repositories",
-    "projects.all": "See every repository on GitHub",
     "research.title": "Data science applied to public health.",
     "research.lead": "Peer-reviewed research combining machine learning and epidemiological data.",
     "certs.title": "Credentials behind the groundwork.",
@@ -69,8 +64,7 @@ const UI = {
     "skills.eyebrow": "Stack & tools",
     "skills.title": "The tools I use to go from data to product.",
     "contact.title": "Shall we build something with data?",
-    "contact.lead": "Open to collaborations, freelance work and conversations about data science, applied AI and civic tech.",
-    filters: { all: "All", ml: "Machine Learning", data: "Data & BI", eng: "Engineering" },
+    "contact.lead": "Open to collaborations, freelance work and conversations about data science, applied AI and public data.",
     viewRepo: "View repository",
     readPaper: "Read the paper · DOI",
     viewPost: "View post",
@@ -89,7 +83,6 @@ const UI = {
 };
 
 const GH = CONTENT.contact.github;
-const LANG_COLORS = { Jupyter: "#DA5B0B", Python: "#3572A5", "Power BI": "#E2B007" };
 
 const ICONS = {
   github: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>',
@@ -172,7 +165,6 @@ const photoCover = (item, tag, L) =>
   `<div class="cover"><span class="cover-tag">${esc(tag)}</span><img src="${esc(item.image)}" alt="${esc(L(item.alt) || "")}" loading="lazy" style="object-position:${esc(item.imagePosition || "center")}" /></div>`;
 
 let lang = store.get("lang") || ((navigator.language || "pt").toLowerCase().startsWith("pt") ? "pt" : "en");
-let filter = "all";
 
 // ---------------------------------------------------------------------
 function render() {
@@ -192,7 +184,6 @@ function render() {
   // Hero
   $("#brandMark").textContent = profile.initials;
   $("#brandName").textContent = profile.name;
-  $("#heroAvail").textContent = L(profile.available);
   $("#heroTitle").innerHTML = fmt(L(profile.headline));
   $("#heroRoles").innerHTML = profile.roles.map((r) => `<span>${esc(r)}</span>`).join("");
   $("#heroLead").textContent = L(profile.lead);
@@ -201,9 +192,12 @@ function render() {
   // Sobre
   $("#aboutTitle").textContent = L(about.title);
   $("#aboutBody").innerHTML = L(about.paragraphs).map((p) => `<p>${fmt(p)}</p>`).join("");
-  $("#facts").innerHTML = about.facts
-    .map((f) => `<div class="fact"><span class="k">${esc(L(f.k))}</span><span class="v">${esc(L(f.v))}</span></div>`)
-    .join("");
+  const photo = $("#aboutPhoto");
+  photo.classList.toggle("is-empty", !profile.photo);
+  photo.innerHTML = profile.photo
+    ? `<img src="${esc(profile.photo)}" alt="${esc(L(about.photoAlt) || profile.name)}" width="900" height="767" loading="lazy" style="object-position:${esc(profile.photoPosition || "center")}" />`
+    : "";
+  photo.setAttribute("aria-hidden", profile.photo ? "false" : "true");
 
   // Projetos em destaque
   $("#featured").innerHTML = featured
@@ -220,8 +214,6 @@ function render() {
       </a>`)
     .join("");
 
-  renderRepos();
-  $("#allRepos").href = `${GH}?tab=repositories`;
 
   // Pesquisa
   const paper = research.paper;
@@ -255,7 +247,7 @@ function render() {
     .map((c) => `
       <article class="cert">
         <div class="cert-stub">
-          ${c.badge ? `<img class="cert-badge" src="${esc(c.badge)}" alt="${esc(`${c.issuer} Certified: ${c.name}`)}" width="112" height="112" loading="lazy" />` : ""}
+          ${c.badge ? `<img class="cert-badge" src="${esc(c.badge)}" alt="${esc(`${c.issuer}: ${L(c.name)}`)}" width="112" height="112" loading="lazy" />` : ""}
           <div>
             <div class="cert-code">${esc(c.code)}</div>
             <div class="cert-level">${esc(c.issuer)} · ${esc(L(c.level))}</div>
@@ -263,14 +255,17 @@ function render() {
         </div>
         <div class="cert-body">
           <span class="cert-perf" aria-hidden="true"></span>
-          <h3 class="cert-name">${esc(c.name)}</h3>
+          <h3 class="cert-name">${esc(L(c.name))}</h3>
           <p class="cert-meta">
             <span class="ok">${ICONS.check}${esc(L(c.status) || t.certified)}</span>
             ${c.date ? `<span>${esc(t.issued)} ${esc(L(c.date))}</span>` : ""}
             ${c.credentialId ? `<span>ID ${esc(c.credentialId)}</span>` : ""}
           </p>
           <p class="cert-summary">${fmt(L(c.summary))}</p>
-          <div class="chips">${L(c.topics).map((x) => `<span class="chip">${esc(x)}</span>`).join("")}</div>
+          ${c.topics ? `<div class="chips">${L(c.topics).map((x) => `<span class="chip">${esc(x)}</span>`).join("")}</div>` : ""}
+          ${c.scores ? `<ul class="cert-scores">${c.scores
+            .map((x) => `<li><span class="sk">${esc(L(x.skill))}</span><span class="bar" aria-hidden="true"><i style="width:${Number(x.score)}%"></i></span><span class="sc">${Number(x.score)} <b>${esc(x.level)}</b></span></li>`)
+            .join("")}</ul>` : ""}
           ${certLinks(c, t, L)}
         </div>
       </article>`)
@@ -362,37 +357,6 @@ if ("ResizeObserver" in window) new ResizeObserver(updateCarousels).observe(docu
 addEventListener("resize", updateCarousels);
 addEventListener("load", updateCarousels);
 
-function renderRepos() {
-  const t = UI[lang];
-  const repos = CONTENT.moreRepos;
-  const cats = ["all", "ml", "data", "eng"];
-  const count = (c) => (c === "all" ? repos.length : repos.filter((r) => r.cat === c).length);
-
-  $("#filters").setAttribute("aria-label", t["projects.moreTitle"]);
-  $("#filters").innerHTML = cats
-    .filter((c) => count(c) > 0)
-    .map((c) => `<button type="button" class="filter" data-cat="${c}" aria-pressed="${c === filter}">${esc(t.filters[c])}<span class="n">${count(c)}</span></button>`)
-    .join("");
-
-  $("#repoList").innerHTML = repos
-    .filter((r) => filter === "all" || r.cat === filter)
-    .map((r) => `
-      <li>
-        <a class="repo" href="${esc(repoUrl(r.repo))}" target="_blank" rel="noopener">
-          <span><span class="rn">${esc(r.repo)}</span><span class="rd">${esc(r.desc[lang])}</span></span>
-          <span class="rl" style="--lang:${LANG_COLORS[r.lang] || "var(--muted)"}">${esc(r.lang)}</span>
-          ${ICONS.arrowUpRight}
-        </a>
-      </li>`)
-    .join("");
-}
-
-$("#filters").addEventListener("click", (e) => {
-  const btn = e.target.closest(".filter");
-  if (!btn) return;
-  filter = btn.dataset.cat;
-  renderRepos();
-});
 
 // Revelar ao rolar
 let io;
